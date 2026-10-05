@@ -1,0 +1,31 @@
+use escola5
+db.alunos.insertOne({ nome: "THIAGO";, idade: 17, curso: "AT"; })
+db.alunos.insertMany([
+{ nome: "JOÃO";, idade: 18, curso: "AT";, notas: [4, 5, 6] },
+{ nome: "ENZO";, idade: 17, curso: "AT";, endereco: { cidade: "Curitiba";,
+estado: "PR"; } }
+])
+show collections
+
+db.alunos.find() -----------------------&gt; find() = SELECT *;
+db.alunos.find({ nome: "THIAGO"; }) ---&gt; find({ filtro }) = WHERE;
+db.alunos.find({ idade: { $gt: 17 } }) --&gt; $gt = maior que (&gt;);
+db.alunos.find({}, { nome: 1, _id: 0 })
+db.alunos.countDocuments()
+
+db.alunos.updateOne({ nome: "THIAGO"; }, { $set: { idade: 17 } })
+db.alunos.find({ nome: "THIAGO"; })
+
+db.alunos.deleteOne({ nome: "JOÃO"; })
+db.alunos.countDocuments()
+
+db.jogos.insertMany([
+{ titulo:"ROBLOX";, genero: "MINECRAFT";, nota: 8 },
+{ titulo: "ZELDA";, genero: "AVENTURA";, nota: 7, plataformas: ["SWITCH";] },
+{ titulo: "FIFA";, genero: "ESPORTE";, nota: 9 }
+])
+db.jogos.find({ nota: { $gte: 8 } })
+
+db.jogos.updateOne({ titulo: "FIFA"; }, { $set: { nota: 9 } })
+db.jogos.deleteOne({ titulo: "ROBLOX"; })
+db.jogos.countDocuments()
